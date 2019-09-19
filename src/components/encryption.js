@@ -9,6 +9,8 @@ import "@ui5/webcomponents/dist/Label";
 import "@ui5/webcomponents/dist/Input.js";
 import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
 import "@ui5/webcomponents/dist/TextArea";
+import "@ui5/webcomponents/dist/List";
+import "@ui5/webcomponents/dist/StandardListItem";
 
 class Encryption extends Component {
 
@@ -62,15 +64,19 @@ class Encryption extends Component {
     }
 
     render() {
+
+        const listItem = (this.state.encryptionMessage == '') ? (null) : ((<ui5-li icon="sap-icon://accept">{this.state.encryptionMessage}</ui5-li>));
+
         return (
             <div className='content'>
+                <ui5-title level="H1">Message encryption</ui5-title>
                 <div className="container">
-                    <ui5-label>Source message:</ui5-label>
+                    <ui5-label>Message:</ui5-label>
                     <ui5-input
                         required
                         ref={this.massageInput}
                         name="massage" 
-                        placeholder="Enter source text"></ui5-input>
+                        placeholder="Enter source message"></ui5-input>
                 </div>
                 <div className="container">
                     <ui5-label>Shift:</ui5-label>
@@ -81,16 +87,15 @@ class Encryption extends Component {
                         placeholder="Enter shift"></ui5-input>
                 </div>
                 <div className="container">
-                    <ui5-button ref={this.encryptButton} design="Default">Encryption</ui5-button><br /> 
+                    <ui5-button ref={this.encryptButton} design="Default">Encrypt</ui5-button><br /> 
                 </div>
                 <div className="container">
-                    <ui5-label>Encrypted message:</ui5-label><br />
-                    <ui5-textarea 
-                        placeholder="Your ciphertext will be here..." 
-                        value={this.state.encryptionMessage} 
-                        readonly
-                        growing>
-                    </ui5-textarea>
+                    <ui5-list 
+                        header-text="Encrypted message" 
+                        separators="None"
+                        no-data-text="Your encrypted message will be here...">
+                        {listItem}
+                    </ui5-list>
                 </div>
             </div>
         )

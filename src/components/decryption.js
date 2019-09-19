@@ -8,6 +8,7 @@ import "@ui5/webcomponents/dist/StandardListItem";
 import "@ui5/webcomponents/dist/Label";
 import "@ui5/webcomponents/dist/Input.js";
 import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
+import "@ui5/webcomponents/dist/Title";
 
 class Decryption extends Component {
 
@@ -61,15 +62,19 @@ class Decryption extends Component {
 
         return (
             <div className='content'>
+                <ui5-title level="H1">Message decryption</ui5-title>
                 <div className="container">
-                    <ui5-label>Source text:</ui5-label>
-                    <ui5-input ref={this.messageInput} name="message" placeholder="Enter source text"></ui5-input>
+                    <ui5-label>Message:</ui5-label>
+                    <ui5-input ref={this.messageInput} name="message" placeholder="Enter source message"></ui5-input>
                 </div>
                 <div className="container">
-                    <ui5-button ref={this.decryptButton} design="Default">Encryption</ui5-button><br /> 
+                    <ui5-button ref={this.decryptButton} design="Default">Decrypt</ui5-button><br /> 
                 </div>
-                <div>
-                    <ui5-list header-text="Decrypted message" separators="None">
+                <div className="container">
+                    <ui5-list
+                        no-data-text="Your decrypted messages will be here..."
+                        header-text="Decrypted message" 
+                        separators="None">
                         {listItems}
                     </ui5-list>
                 </div>
