@@ -6,6 +6,7 @@ import { showToDectyptPage, showToEnctyptPage } from '../actions/renderAction';
 import "@ui5/webcomponents/dist/TabContainer";
 import "@ui5/webcomponents/dist/Tab";
 import "@ui5/webcomponents/dist/TabSeparator";
+import "@ui5/webcomponents/dist/Label";
 
 class Navbar extends Component {
 
@@ -32,14 +33,17 @@ class Navbar extends Component {
         if(event.detail.item.id == 'decryption') {
             this.props.showToDectyptPage();
         }
+        
     }
 
     render() {
         return (
             <div>
                 <ui5-tabcontainer ref={this.select} class="full-width" collapsed fixed show-overflow>
-                    <ui5-tab id="encryption" text="Encryption" selected></ui5-tab>
-                    <ui5-tab id="decryption" text="Decryption"></ui5-tab>
+                    <ui5-tab id="encryption" text='Encryption' selected>
+                    </ui5-tab>
+                    <ui5-tab id="decryption" text='Decryption'>
+                    </ui5-tab>
                 </ui5-tabcontainer>
             </div>
         )

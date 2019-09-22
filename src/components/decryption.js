@@ -29,7 +29,7 @@ class Decryption extends Component {
     }
 
     onClick(event) {
-        this.props.decryptMessage(this.state.message, this.state.alphabet);
+        this.props.decryptMessage(this.state.message.toUpperCase(), this.state.alphabet);
         var aMessages = this.props.decryptionMessages;
         this.setState({
             ...this.state,
@@ -61,7 +61,7 @@ class Decryption extends Component {
         ));
 
         return (
-            <div className='content'>
+            <div id='decrypt' className='content'>
                 <ui5-title level="H1">Message decryption</ui5-title>
                 <div className="container">
                     <ui5-label>Message:</ui5-label>
@@ -85,13 +85,11 @@ class Decryption extends Component {
 
 Decryption.propTypes = {
     decryptMessage: PropTypes.func.isRequired,
-    decryptionMessages: PropTypes.array.isRequired,
-    enable: PropTypes.bool.isRequired
+    decryptionMessages: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    decryptionMessages: state.encoded.messages,
-    enable: state.render.pages.decryptPage.enable
+    decryptionMessages: state.encoded.messages
 });
 
 export default connect(mapStateToProps, { decryptMessage })(Decryption);

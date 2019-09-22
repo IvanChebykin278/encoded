@@ -68,7 +68,7 @@ class Encryption extends Component {
         const listItem = (this.state.encryptionMessage == '') ? (null) : ((<ui5-li icon="sap-icon://accept">{this.state.encryptionMessage}</ui5-li>));
 
         return (
-            <div className='content'>
+            <div id='encrypt' className='content'>
                 <ui5-title level="H1">Message encryption</ui5-title>
                 <div className="container">
                     <ui5-label>Message:</ui5-label>
@@ -105,12 +105,10 @@ class Encryption extends Component {
 Encryption.propTypes = {
     encryptMessage: PropTypes.func.isRequired,
     encryptionMessage: PropTypes.string.isRequired,
-    enable: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => ({
     encryptionMessage: state.encoded.message,
-    enable: state.render.pages.encryptPage.enable
 });
 
 export default connect(mapStateToProps, { encryptMessage })(Encryption);

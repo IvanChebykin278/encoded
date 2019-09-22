@@ -1,14 +1,7 @@
 import { SHOW_TO_DECRYPT_PAGE, SHOW_TO_ENCRYPT_PAGE } from "../actions/types";
 
 const initialState = {
-    pages: {
-        encryptPage: {
-            enable: true
-        },
-        decryptPage: {
-            enable: false
-        }
-    }
+    component: 'encrypt'
 };
 
 export default function(state = initialState, action) {
@@ -16,26 +9,12 @@ export default function(state = initialState, action) {
         case SHOW_TO_ENCRYPT_PAGE:
             return {
                 ...state,
-                pages: {
-                    encryptPage: {
-                        enable: action.payload.encrypt
-                    },
-                    decryptPage: {
-                        enable: action.payload.decrypt
-                    }
-                }
+                component: action.payload
             }
          case SHOW_TO_DECRYPT_PAGE: 
             return {
                 ...state,
-                pages: {
-                    encryptPage: {
-                        enable: action.payload.encrypt
-                    },
-                    decryptPage: {
-                        enable: action.payload.decrypt
-                    }
-                }
+                component: action.payload
             }
          default:
              return state;
